@@ -21,11 +21,13 @@ public class Pais implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
+   
     @Length(max = 50 ,message = "tamnho maximo do campo é {max} caracteres")
     @NotBlank(message = "Campo não poder ser vazio")
     @NotNull(message = "Campo Nome não foi informado nenhum valor")
     @Column(length = 50, nullable = false)
     String nome;
+   
     @Length(max = 3 ,message = "tamnho maximo do campo é {max} caracteres")
     @NotBlank(message = "Campo não poder ser vazio")
     @NotNull(message = "Campo iso não foi informado nenhum valor")
