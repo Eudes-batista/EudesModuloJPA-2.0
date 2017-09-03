@@ -1,9 +1,8 @@
 package teste;
 
+import controle.EntityManagerUtil;
 import java.util.Set;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -13,8 +12,7 @@ import modelo.Pais;
 public class TesteValidacaoPais {
 
     public static void main(String[] args) {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("AprendendoPU");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityManager entityManager = EntityManagerUtil.getEntityManager();
         Pais pais = new Pais();
         pais.setNome("URUGUAI");
         pais.setIso("URU");
@@ -32,7 +30,6 @@ public class TesteValidacaoPais {
         }
         entityManager.getTransaction().commit();
         entityManager.close();
-        entityManagerFactory.close();
 
     }
 
