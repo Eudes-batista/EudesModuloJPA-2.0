@@ -33,7 +33,6 @@ public class Estado implements Serializable {
     @NotNull(message = "Campo uf não foi informado nenhum valor")
     @Column(nullable = false, length = 2)
     String uf;
-    @NotBlank(message = "Campo pais não pode ser vazio")
     @NotNull(message = "Campo pais não foi informado nenhum valor")
     @ManyToOne
     @JoinColumn(name = "id_pais", referencedColumnName = "id", nullable = false)
