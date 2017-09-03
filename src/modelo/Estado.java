@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -22,31 +20,32 @@ import org.hibernate.validator.constraints.NotBlank;
 public class Estado implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
-    
+    @NotNull(message = "Campo codigo do estado precisa ser informado algum valor")
+    @Column(length = 2, nullable = false, unique = true)
+    Integer codigo;
+
     @Length(max = 50, message = "Campo so pode receber apenas {max} caracteres")
     @NotBlank(message = "Campo Nome não pode ser vazio")
     @NotNull(message = "Campo nome não foi informado nenhum valor")
     @Column(nullable = false, length = 50)
     String nome;
-   
+
     @Length(max = 2, message = " O campo uf so pode receber apenas {max} caracteres")
     @NotBlank(message = "Campo uf não pode ser vazio")
     @NotNull(message = "Campo uf não foi informado nenhum valor")
     @Column(nullable = false, length = 2)
     String uf;
-    
+
     @NotNull(message = "Campo pais não foi informado nenhum valor")
     @ManyToOne
-    @JoinColumn(name = "id_pais", referencedColumnName = "id", nullable = false)
-    @ForeignKey(name = "estadoFKpais")        
+    @JoinColumn(name = "id_pais", referencedColumnName = "codigo", nullable = false)
+    @ForeignKey(name = "estadoFKpais")
     Pais pais;
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 89 * hash + Objects.hashCode(this.id);
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.codigo);
         return hash;
     }
 
@@ -62,7 +61,8 @@ public class Estado implements Serializable {
             return false;
         }
         final Estado other = (Estado) obj;
-        return Objects.equals(this.id, other.id);
+        return Objects.equals(this.codigo, other.codigo);
     }
 
+    
 }
