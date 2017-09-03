@@ -8,7 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import lombok.Data;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Data
 @Entity
@@ -18,8 +21,14 @@ public class Pais implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
+    @Length(max = 50 ,message = "tamnho maximo do campo é {max} caracteres")
+    @NotBlank(message = "Campo não poder ser vazio")
+    @NotNull(message = "Campo Nome não foi informado nenhum valor")
     @Column(length = 50, nullable = false)
     String nome;
+    @Length(max = 3 ,message = "tamnho maximo do campo é {max} caracteres")
+    @NotBlank(message = "Campo não poder ser vazio")
+    @NotNull(message = "Campo iso não foi informado nenhum valor")
     @Column(length = 3, nullable = false)
     String iso;
 
