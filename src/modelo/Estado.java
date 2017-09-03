@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import lombok.Data;
+import org.hibernate.annotations.ForeignKey;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -36,6 +37,7 @@ public class Estado implements Serializable {
     @NotNull(message = "Campo pais não foi informado nenhum valor")
     @ManyToOne
     @JoinColumn(name = "id_pais", referencedColumnName = "id", nullable = false)
+    @ForeignKey(name = "estadoFKpais")        
     Pais pais;
 
     @Override
