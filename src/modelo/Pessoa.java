@@ -51,6 +51,9 @@ public class Pessoa implements Serializable {
     @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     List<Endereco> enderecos = new ArrayList<>();
 
+    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    List<Contato> contatos = new ArrayList<>();
+
     public void addEndereco(Endereco endereco) {
         endereco.setPessoa(this);
         enderecos.add(endereco);
@@ -58,6 +61,15 @@ public class Pessoa implements Serializable {
 
     public void removeEndereco(Endereco endereco) {
         enderecos.remove(endereco);
+    }
+
+    public void addContato(Contato Contato) {
+        Contato.setPessoa(this);
+        contatos.add(Contato);
+    }
+
+    public void removeContato(Contato contato) {
+        contatos.remove(contato);
     }
 
     @Override
