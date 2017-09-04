@@ -4,6 +4,11 @@
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>modelo.Pais</class>
     <class>modelo.Estado</class>
+    <class>modelo.Cidade</class>
+    <class>modelo.Endereco</class>
+    <class>modelo.Pessoa</class>
+    <class>modelo.PessoaFisica</class>
+    <class>modelo.TipoEndereco</class>
     <properties>
       <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
