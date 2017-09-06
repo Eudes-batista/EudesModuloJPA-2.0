@@ -48,4 +48,5 @@ public class PessoaFisica extends Pessoa implements Serializable {
     @Column(length = 10, nullable = false)
     String senha;
 
+    
 }

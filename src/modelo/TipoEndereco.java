@@ -1,6 +1,7 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,4 +27,28 @@ public class TipoEndereco implements Serializable {
     @NotNull(message = "Campo descricao não pode ser nulo")
     @Column(length = 20, nullable = false)
     String descricao;
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 67 * hash + Objects.hashCode(this.codigo);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final TipoEndereco other = (TipoEndereco) obj;
+        return Objects.equals(this.codigo, other.codigo);
+    }
+    
+    
 }

@@ -1,6 +1,7 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -36,5 +37,29 @@ public class Contato implements Serializable{
     @NotNull(message = "Campo descrição não pode ser nulo")
     @Column(name="descricao",nullable=false,length = 10)
     String descricao;
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 67 * hash + Objects.hashCode(this.pessoa);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Contato other = (Contato) obj;
+        return Objects.equals(this.pessoa, other.pessoa);
+    }
+    
+    
     
 }
