@@ -37,6 +37,7 @@ public class Compra implements Serializable {
     @Column(name = "valor_total", precision = 15, scale = 6)
     Double valorTotal;
 
+    @Id
     @NotNull(message = "Campo pessoa não pode receber valor nulo")
     @ManyToOne
     @JoinColumn(name = "pessoa_jurica", nullable = false, referencedColumnName = "codigo")
@@ -57,8 +58,9 @@ public class Compra implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 47 * hash + Objects.hashCode(this.numeroNota);
+        int hash = 7;
+        hash = 59 * hash + Objects.hashCode(this.numeroNota);
+        hash = 59 * hash + Objects.hashCode(this.pessoaJuridica);
         return hash;
     }
 
@@ -74,7 +76,9 @@ public class Compra implements Serializable {
             return false;
         }
         final Compra other = (Compra) obj;
-        return Objects.equals(this.numeroNota, other.numeroNota);
+        if (!Objects.equals(this.numeroNota, other.numeroNota)) {
+            return false;
+        }
+        return Objects.equals(this.pessoaJuridica, other.pessoaJuridica);
     }
-
 }
