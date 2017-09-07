@@ -1,12 +1,19 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
@@ -47,6 +54,14 @@ public class PessoaFisica extends Pessoa implements Serializable {
     @NotNull(message = "Campo senha não foi informado nenhum valor")
     @Column(length = 10, nullable = false)
     String senha;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "produto_pessoa_fisica"
+   ,joinColumns = 
+           @JoinColumn(name = "pessoa_fisica",nullable = false,referencedColumnName = "codigo"),
+           inverseJoinColumns = 
+           @JoinColumn(name = "produto",referencedColumnName = "codigo",nullable = false),
+           uniqueConstraints = {@UniqueConstraint(columnNames = {"pessoa_fisica","produto"})})        
+    List<Produto> produtos = new ArrayList<>();
 
     
 }
