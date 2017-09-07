@@ -9,6 +9,19 @@
     <class>modelo.Pessoa</class>
     <class>modelo.PessoaFisica</class>
     <class>modelo.TipoEndereco</class>
+    <class>modelo.Arquivo</class>
+    <class>modelo.Categoria</class>
+    <class>modelo.Compra</class>
+    <class>modelo.CompraItem</class>
+    <class>modelo.Contato</class>
+    <class>modelo.Foto</class>
+    <class>modelo.Marca</class>
+    <class>modelo.Parcela</class>
+    <class>modelo.Permissao</class>
+    <class>modelo.PessoaJuridica</class>
+    <class>modelo.Produto</class>
+    <class>modelo.Venda</class>
+    <class>modelo.VendaItem</class>
     <properties>
       <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>

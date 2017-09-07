@@ -55,13 +55,27 @@ public class PessoaFisica extends Pessoa implements Serializable {
     @Column(length = 10, nullable = false)
     String senha;
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "produto_pessoa_fisica"
-   ,joinColumns = 
-           @JoinColumn(name = "pessoa_fisica",nullable = false,referencedColumnName = "codigo"),
-           inverseJoinColumns = 
-           @JoinColumn(name = "produto",referencedColumnName = "codigo",nullable = false),
-           uniqueConstraints = {@UniqueConstraint(columnNames = {"pessoa_fisica","produto"})})        
+    @JoinTable(name = "produto_pessoa_fisica",
+            joinColumns
+            = @JoinColumn(name = "pessoa_fisica", nullable = false, referencedColumnName = "codigo"),
+            inverseJoinColumns
+            = @JoinColumn(name = "produto", referencedColumnName = "codigo", nullable = false),
+            uniqueConstraints = {
+                @UniqueConstraint(columnNames = {"pessoa_fisica", "produto"})})
     List<Produto> produtos = new ArrayList<>();
 
+    @JoinTable(name = "permissoes",
+            joinColumns = @JoinColumn(name = "usuario", nullable = false, referencedColumnName = "usuario"),
+            inverseJoinColumns = @JoinColumn(name = "permissao", nullable = false, referencedColumnName = "nome"),
+            uniqueConstraints = {
+                @UniqueConstraint(columnNames = {"usuario", "permissao"})})
+    List<Permissao> permissaos = new ArrayList<>();
+
+    public void addPermissao(Permissao permissao){
+        permissaos.add(permissao);
+    }
+    public void removerPermissao(Permissao permissao){
+        permissaos.remove(permissao);
+    }
     
 }
