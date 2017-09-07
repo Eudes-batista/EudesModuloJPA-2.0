@@ -44,6 +44,9 @@ public class Venda implements Serializable {
     @OneToMany(mappedBy = "venda", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     List<VendaItem> listaItens = new ArrayList<>();
 
+    @OneToMany(mappedBy = "venda", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    List<Parcela> listaParcelas = new ArrayList<>();
+
     public void addItem(VendaItem vendaItem) {
         vendaItem.setVenda(this);
         listaItens.add(vendaItem);
@@ -51,6 +54,15 @@ public class Venda implements Serializable {
 
     public void removerItem(VendaItem vendaItem) {
         listaItens.remove(vendaItem);
+    }
+
+    public void addParcela(Parcela parcela) {
+        parcela.setVenda(this);
+        listaParcelas.add(parcela);
+    }
+
+    public void removerParcela(Parcela parcela) {
+        listaParcelas.remove(parcela);
     }
 
     @Override
