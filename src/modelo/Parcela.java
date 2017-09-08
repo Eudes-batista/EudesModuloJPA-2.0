@@ -33,7 +33,6 @@ public class Parcela implements Serializable {
     @Column(precision = 10, scale = 6, name = "valor_pagamento", nullable = false)
     Double valorPagamento;
 
-    @NotNull(message = "Campo valor do pagamento não foi informado nenhum valor")
     @Temporal(TemporalType.DATE)
     @Column(name = "data_pagamento", nullable = false)
     Calendar dataPagamento;
