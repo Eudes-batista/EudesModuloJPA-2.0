@@ -24,7 +24,7 @@ public class Parcela implements Serializable {
     @NotNull(message = "Campo valor não foi informado nenhum valor")
     Double valor;
 
-    @NotNull(message = "Campo vencimento não foi informado nenhum valor")
+    
     @Temporal(TemporalType.DATE)
     @Column(nullable = false)
     Calendar vencimento;

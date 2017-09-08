@@ -82,6 +82,21 @@ public class Venda implements Serializable {
         listaParcelas.remove(parcela);
     }
 
+    public void gerarParcela(Parcela p) {
+        Double valorParcela = this.valorTotal / this.quantidadeParcela;
+        for (int i = 1; i <= this.quantidadeParcela; i++) {
+            ParcelaPK parcelaPK = new ParcelaPK();
+            parcelaPK.setNumero(i);
+            p.setParcelaPK(parcelaPK);
+            p.setValor(valorParcela);
+            p.setValorPagamento(p.getValorPagamento() == 0.0 ? p.getValor() : p.getValorPagamento());
+            Calendar c = (Calendar) data.clone();
+            c.add(Calendar.MONTH, i);
+            p.setVencimento(p.getVencimento() == null ? c : p.getVencimento());
+            
+        }
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;
