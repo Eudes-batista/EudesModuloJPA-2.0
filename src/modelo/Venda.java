@@ -12,12 +12,16 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import lombok.Data;
+import org.hibernate.annotations.ForeignKey;
 
 @Data
 @Entity
@@ -34,6 +38,7 @@ public class Venda implements Serializable {
     Calendar data;
 
     @NotNull(message = "Campo valor total não pode receber valor nulo")
+    @Min(value = 1,message = "ovalor minimo é {value}")
     @Column(name = "valor_total", precision = 15, scale = 6)
     Double valorTotal;
 
@@ -41,6 +46,12 @@ public class Venda implements Serializable {
     @Column(name = "quant_parcela", nullable = false, length = 3)
     Integer quantidadeParcela;
 
+    @NotNull(message = "Campo pessoa fisica não pode receber valor nulo")
+    @ManyToOne
+    @JoinColumn(name = "pessoa_fisica",nullable = true,referencedColumnName = "codigo")        
+    @ForeignKey(name = "pessoa_fisicaFKvenda")        
+    PessoaFisica pessoaFisica;
+    
     @OneToMany(mappedBy = "venda", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     List<VendaItem> listaItens = new ArrayList<>();
 
