@@ -4,26 +4,21 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Objects;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import lombok.Data;
-import org.hibernate.annotations.ForeignKey;
 
 @Data
 @Entity
 @Table(name = "parcela")
 public class Parcela implements Serializable {
 
-    @Id
-    @NotNull(message = "Campo numero não foi informado nenhum valor")
-    @Column(nullable = false)
-    Integer numero;
+    @EmbeddedId
+    ParcelaPK parcelaPK;
 
     @Column(precision = 10, scale = 6, nullable = false)
     @NotNull(message = "Campo valor não foi informado nenhum valor")
@@ -43,18 +38,10 @@ public class Parcela implements Serializable {
     @Column(name = "data_pagamento", nullable = false)
     Calendar dataPagamento;
 
-    @Id
-    @NotNull(message = "Campo venda não pode ser vazio")
-    @ManyToOne
-    @JoinColumn(name = "venda", nullable = false, referencedColumnName = "codigo")
-    @ForeignKey(name = "vendaFKvenda_item")
-    Venda venda;
-
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 17 * hash + Objects.hashCode(this.numero);
-        hash = 17 * hash + Objects.hashCode(this.venda);
+        int hash = 3;
+        hash = 79 * hash + Objects.hashCode(this.parcelaPK);
         return hash;
     }
 
@@ -70,12 +57,7 @@ public class Parcela implements Serializable {
             return false;
         }
         final Parcela other = (Parcela) obj;
-        if (!Objects.equals(this.numero, other.numero)) {
-            return false;
-        }
-        return Objects.equals(this.venda, other.venda);
+        return Objects.equals(this.parcelaPK, other.parcelaPK);
     }
 
-    
-    
 }

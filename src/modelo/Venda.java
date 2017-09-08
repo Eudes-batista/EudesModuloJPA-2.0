@@ -38,7 +38,7 @@ public class Venda implements Serializable {
     Calendar data;
 
     @NotNull(message = "Campo valor total não pode receber valor nulo")
-    @Min(value = 1,message = "ovalor minimo é {value}")
+    @Min(value = 1, message = "ovalor minimo é {value}")
     @Column(name = "valor_total", precision = 15, scale = 6)
     Double valorTotal;
 
@@ -48,27 +48,33 @@ public class Venda implements Serializable {
 
     @NotNull(message = "Campo pessoa fisica não pode receber valor nulo")
     @ManyToOne
-    @JoinColumn(name = "pessoa_fisica",nullable = true,referencedColumnName = "codigo")        
-    @ForeignKey(name = "pessoa_fisicaFKvenda")        
+    @JoinColumn(name = "pessoa_fisica", nullable = true, referencedColumnName = "codigo")
+    @ForeignKey(name = "pessoa_fisicaFKvenda")
     PessoaFisica pessoaFisica;
-    
+
     @OneToMany(mappedBy = "venda", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     List<VendaItem> listaItens = new ArrayList<>();
 
-    @OneToMany(mappedBy = "venda", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "parcelaPK.venda", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     List<Parcela> listaParcelas = new ArrayList<>();
+
+    public Venda() {
+        this.valorTotal = 0.0;
+    }
 
     public void addItem(VendaItem vendaItem) {
         vendaItem.setVenda(this);
+        this.valorTotal += vendaItem.getValorTotal();
         listaItens.add(vendaItem);
     }
 
     public void removerItem(VendaItem vendaItem) {
+        this.valorTotal -= vendaItem.getValorTotal();
         listaItens.remove(vendaItem);
     }
 
     public void addParcela(Parcela parcela) {
-        parcela.setVenda(this);
+        parcela.getParcelaPK().setVenda(this);
         listaParcelas.add(parcela);
     }
 
