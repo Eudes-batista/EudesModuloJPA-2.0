@@ -40,6 +40,12 @@ public class CompraItem implements Serializable {
     @JoinColumn(name = "compra", nullable = false, referencedColumnName = "compraPK.numeroNota")
     @ForeignKey(name = "compraFKcompra_item")
     Compra compra;
+    
+    @NotNull(message = "produto não pode ser vazio")
+    @ManyToOne
+    @JoinColumn(name = "produto",referencedColumnName = "codigo",nullable = false)        
+    @ForeignKey(name = "produtoFKcompra_item")        
+    Produto produto;
 
     @Override
     public int hashCode() {
