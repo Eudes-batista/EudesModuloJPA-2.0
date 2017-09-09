@@ -10,7 +10,6 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -73,11 +72,12 @@ public class PessoaFisica extends Pessoa implements Serializable {
                 @UniqueConstraint(columnNames = {"usuario", "permissao"})})
     List<Permissao> permissaos = new ArrayList<>();
 
-    public void addPermissao(Permissao permissao){
+    public void addPermissao(Permissao permissao) {
         permissaos.add(permissao);
     }
-    public void removerPermissao(Permissao permissao){
+
+    public void removerPermissao(Permissao permissao) {
         permissaos.remove(permissao);
     }
-    
+
 }
