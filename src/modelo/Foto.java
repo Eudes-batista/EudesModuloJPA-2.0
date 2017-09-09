@@ -38,7 +38,7 @@ public class Foto implements Serializable {
     private byte[] arquivo;
     @NotNull(message = "O produto deve ser informado")
     @ManyToOne
-    @JoinColumn(name = "produto", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "produto", referencedColumnName = "codigo", nullable = false)
     private Produto produto;
 
     public Foto() {

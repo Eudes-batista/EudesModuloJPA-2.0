@@ -40,7 +40,7 @@ public class Arquivo implements Serializable {
     
     @NotNull(message = "O produto deve ser informado")
     @ManyToOne
-    @JoinColumn(name = "produto", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "produto", referencedColumnName = "codigo", nullable = false)
     private Produto produto;
 
     public Arquivo() {
