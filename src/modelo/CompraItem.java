@@ -39,11 +39,11 @@ public class CompraItem implements Serializable {
     @ManyToOne
     @ForeignKey(name = "compraFKcompra_item")
     Compra compra;
-    
+
     @NotNull(message = "produto não pode ser vazio")
     @ManyToOne
-    @JoinColumn(name = "produto",referencedColumnName = "codigo",nullable = false)        
-    @ForeignKey(name = "produtoFKcompra_item")        
+    @JoinColumn(name = "produto", referencedColumnName = "codigo", nullable = false)
+    @ForeignKey(name = "produtoFKcompra_item")
     Produto produto;
 
     @Override
@@ -67,6 +67,5 @@ public class CompraItem implements Serializable {
         final CompraItem other = (CompraItem) obj;
         return Objects.equals(this.codigo, other.codigo);
     }
-    
-    
+
 }

@@ -35,12 +35,18 @@ public class Compra implements Serializable {
     @OneToMany(mappedBy = "compra", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     List<CompraItem> listaItens = new ArrayList<>();
 
+    public Compra() {
+        this.valorTotal =0.0;
+    }
+
     public void addItem(CompraItem compraItem) {
         compraItem.setCompra(this);
+        this.valorTotal +=compraItem.getValorTotal();
         listaItens.add(compraItem);
     }
 
     public void removerItem(CompraItem compraItem) {
+        this.valorTotal -=compraItem.getValorTotal();
         listaItens.remove(compraItem);
     }
 }
