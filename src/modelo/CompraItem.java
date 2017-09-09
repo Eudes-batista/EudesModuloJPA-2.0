@@ -37,7 +37,7 @@ public class CompraItem implements Serializable {
 
     @NotNull(message = "Campo compra não pode ser vazio")
     @ManyToOne
-    @JoinColumn(name = "compra", nullable = false, referencedColumnName = "numeroNota")
+    @JoinColumn(name = "compra", nullable = false, referencedColumnName = "compraPK.numeroNota")
     @ForeignKey(name = "compraFKcompra_item")
     Compra compra;
 
