@@ -54,13 +54,13 @@ public class Produto implements Serializable {
 
     @NotNull(message = "A categoria deve ser informada")
     @ManyToOne
-    @JoinColumn(name = "categoria", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "categoria", referencedColumnName = "codigo", nullable = false)
     @ForeignKey(name = "fk_categoria")
     private Categoria categoria;
 
     @NotNull(message = "A marca deve ser informada")
     @ManyToOne
-    @JoinColumn(name = "marca", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "marca", referencedColumnName = "codigo", nullable = false)
     @ForeignKey(name = "fk_marca")
     private Marca marca;
 
