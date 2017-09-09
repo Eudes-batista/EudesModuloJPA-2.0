@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import lombok.Data;
@@ -20,9 +19,9 @@ import org.hibernate.validator.constraints.NotBlank;
 @Entity
 @Table(name = "foto")
 public class Foto implements Serializable {
+
     @Id
-    @SequenceGenerator(name = "seq_foto", sequenceName = "seq_foto_id", allocationSize = 1)
-    @GeneratedValue(generator = "seq_foto", strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codigo;
     @NotNull(message = "O nome deve ser informado")
     @NotBlank(message = "O nome não pode ser em branco")
@@ -30,7 +29,7 @@ public class Foto implements Serializable {
     private String nome;
     @NotNull(message = "A descrição deve ser informada")
     @NotBlank(message = "A descrição não pode ser em branco")
-    @Column(name = "descricao", nullable = false, length = 50)    
+    @Column(name = "descricao", nullable = false, length = 50)
     private String descricao;
     @NotNull(message = "O arquivo deve ser informado")
     @Column(name = "arquivo", nullable = false)
@@ -43,7 +42,6 @@ public class Foto implements Serializable {
 
     public Foto() {
     }
-
 
     @Override
     public int hashCode() {
