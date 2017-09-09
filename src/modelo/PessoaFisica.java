@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -64,6 +65,7 @@ public class PessoaFisica extends Pessoa implements Serializable {
                 @UniqueConstraint(columnNames = {"pessoa_fisica", "produto"})})
     List<Produto> produtos = new ArrayList<>();
 
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "permissoes",
             joinColumns = @JoinColumn(name = "usuario", nullable = false, referencedColumnName = "usuario"),
             inverseJoinColumns = @JoinColumn(name = "permissao", nullable = false, referencedColumnName = "nome"),
