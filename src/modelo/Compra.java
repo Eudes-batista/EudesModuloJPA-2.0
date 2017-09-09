@@ -15,12 +15,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
 @Table(name = "compra")
-@EqualsAndHashCode(exclude = {"data","valorTotal","listaItens"})
 public class Compra implements Serializable {
 
     @EmbeddedId
