@@ -30,8 +30,9 @@ public class ConsultarCidade {
     @Test
     public void consultar() {
 
-        Query  query = entityManager.createNamedQuery("cidade.listaTodos");
+        Query  query = entityManager.createNamedQuery("cidade.listaPorEstado");
         List<Cidade> listarCidades = query.getResultList();
+        System.out.println(listarCidades.size());
         for (Cidade listarCidade : listarCidades) {
             System.out.println(listarCidade.getNome());
         }
