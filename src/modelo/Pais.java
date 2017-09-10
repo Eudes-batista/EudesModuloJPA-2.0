@@ -5,6 +5,8 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import lombok.Data;
@@ -14,6 +16,9 @@ import org.hibernate.validator.constraints.NotBlank;
 @Data
 @Entity
 @Table(name = "pais")
+@NamedQueries(
+   @NamedQuery(name = "pais.listaTodos",query = "SELECT p FROM Pais p")
+)
 public class Pais implements Serializable {
 
     @Id

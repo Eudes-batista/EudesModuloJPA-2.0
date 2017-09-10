@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import lombok.Data;
@@ -17,6 +19,9 @@ import org.hibernate.validator.constraints.NotBlank;
 @Data
 @Entity
 @Table(name = "cidade")
+@NamedQueries(
+   @NamedQuery(name = "cidade.listaTodos",query = "SELECT c FROM Cidade c")
+ )
 public class Cidade implements Serializable {
 
     @Id
