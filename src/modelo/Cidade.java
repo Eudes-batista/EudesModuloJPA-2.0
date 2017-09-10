@@ -22,9 +22,7 @@ import org.hibernate.validator.constraints.NotBlank;
 @NamedQueries({
    @NamedQuery(name = "cidade.listaTodos"    ,query = "SELECT c FROM Cidade c"),
    @NamedQuery(name = "cidade.listaPorEstado",
-               query = "SELECT c FROM Cidade c"
-                     + " INNER JOIN c.estado"    
-                     + " group by c.estado.nome")       
+               query = "SELECT c FROM Cidade c")       
 })
 public class Cidade implements Serializable {
 

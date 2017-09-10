@@ -34,7 +34,7 @@ public class ConsultarCidade {
         List<Cidade> listarCidades = query.getResultList();
         System.out.println(listarCidades.size());
         for (Cidade listarCidade : listarCidades) {
-            System.out.println(listarCidade.getNome());
+            System.out.println("Estado "+listarCidade.getEstado().getNome()+" Cidade: "+listarCidade.getNome());
         }
     }
 
