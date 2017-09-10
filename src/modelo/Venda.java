@@ -29,8 +29,8 @@ import org.hibernate.annotations.ForeignKey;
 @Entity
 @Table(name = "venda")
 @NamedQueries({
-        @NamedQuery(name = "venda.listaVendaPorData", query = "SELECT v FROM Venda WHERE v.data < CURRENT_DATE")
-       ,@NamedQuery(name="venda.listaTodos",query="SELECT v FROM Venda v")
+     //@NamedQuery(name = "venda.listaVendaPorData", query = "SELECT v FROM Venda WHERE v.data < CURRENT_DATE")
+       @NamedQuery(name = "venda.listaTodos", query = "SELECT v FROM Venda v")
 })
 public class Venda implements Serializable {
 

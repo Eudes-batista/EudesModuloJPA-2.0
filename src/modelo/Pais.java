@@ -16,9 +16,11 @@ import org.hibernate.validator.constraints.NotBlank;
 @Data
 @Entity
 @Table(name = "pais")
-@NamedQueries(
-   @NamedQuery(name = "pais.listaTodos",query = "SELECT p FROM Pais p")
-)
+@NamedQueries({
+   @NamedQuery(name = "pais.listaTodos",query = "SELECT p FROM Pais p"),
+   @NamedQuery(name="pais.listaPorNome",query = "SELECT p FROM Pais p WHERE p.nome= :nome") 
+        
+})
 public class Pais implements Serializable {
 
     @Id
