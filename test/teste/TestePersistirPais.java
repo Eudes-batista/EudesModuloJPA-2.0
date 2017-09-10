@@ -36,9 +36,9 @@ public class TestePersistirPais {
     @Test
     public void persistir(){
         Pais pais = new Pais();
-        pais.setCodigo(1058);
-        
+        pais.setCodigo(1058).setNome("BRASIL").setIso("BRA");
         entityManager.getTransaction().begin();
+        entityManager.persist(pais);
         entityManager.getTransaction().commit();
         
     }
