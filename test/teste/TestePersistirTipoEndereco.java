@@ -7,7 +7,6 @@ package teste;
 
 import controle.EntityManagerUtil;
 import javax.persistence.EntityManager;
-import modelo.Pais;
 import modelo.TipoEndereco;
 import org.junit.After;
 import org.junit.Before;
@@ -37,10 +36,10 @@ public class TestePersistirTipoEndereco {
     @Test
     public void persistir(){
         TipoEndereco tipoEndereco = new TipoEndereco();
-        tipoEndereco.setCodigo(1);
+        tipoEndereco.setCodigo(01);
         tipoEndereco.setDescricao("Residencial");
         TipoEndereco tipoEndereco2 = new TipoEndereco();
-        tipoEndereco2.setCodigo(2);
+        tipoEndereco2.setCodigo(02);
         tipoEndereco2.setDescricao("Comercial");
         entityManager.getTransaction().begin();
         entityManager.persist(tipoEndereco);

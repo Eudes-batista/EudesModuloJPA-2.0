@@ -20,13 +20,13 @@ public class TipoEndereco implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer codigo;
+    private Integer codigo;
 
     @Length(max = 20, message = "Campo descrição só poder receber apenas {max} caracteres")
     @NotBlank(message = "Campo descricao não ser vazio")
     @NotNull(message = "Campo descricao não pode ser nulo")
     @Column(length = 20, nullable = false)
-    String descricao;
+    private String descricao;
 
     @Override
     public int hashCode() {
@@ -49,6 +49,4 @@ public class TipoEndereco implements Serializable {
         final TipoEndereco other = (TipoEndereco) obj;
         return Objects.equals(this.codigo, other.codigo);
     }
-    
-    
 }
