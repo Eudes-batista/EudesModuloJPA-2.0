@@ -6,7 +6,12 @@
 package teste;
 
 import controle.EntityManagerUtil;
+import java.util.Set;
 import javax.persistence.EntityManager;
+import javax.swing.JOptionPane;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
 import modelo.TipoEndereco;
 import org.junit.After;
 import org.junit.Before;
@@ -33,15 +38,27 @@ public class TestePersistirTipoEndereco {
         entityManager.close();
     }
     
+   
     @Test
-    public void persistir(){
-        TipoEndereco tipoEndereco = new TipoEndereco();
-        tipoEndereco.setCodigo(01);
-        tipoEndereco.setDescricao("Residencial");
+    public void persistir() {
+
+        TipoEndereco endereco = new TipoEndereco();
+        endereco.setCodigo(2);
+        endereco.setDescricao("Comercial");
         entityManager.getTransaction().begin();
-        entityManager.persist(tipoEndereco);
+        Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
+        Set<ConstraintViolation<TipoEndereco>> erros = validator.validate(endereco);
+        StringBuilder sb = new StringBuilder();
+        if (erros.size() > 0) {
+            for (ConstraintViolation<TipoEndereco> erro : erros) {
+                sb.append("Erro :").append(erro.getMessage()).append("\n");
+            }
+            JOptionPane.showMessageDialog(null, sb.toString(), "ERRO", JOptionPane.ERROR_MESSAGE);
+        } else {
+            entityManager.persist(endereco);
+        }
         entityManager.getTransaction().commit();
-        
+
     }
     
 }

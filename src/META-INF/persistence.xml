@@ -21,6 +21,7 @@
     <class>modelo.Produto</class>
     <class>modelo.Venda</class>
     <class>modelo.VendaItem</class>
+    <class>modelo.TipoEndereco</class>
     <properties>
       <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
