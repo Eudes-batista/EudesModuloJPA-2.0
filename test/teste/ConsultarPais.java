@@ -30,9 +30,9 @@ public class ConsultarPais {
     public void consultar() {
 
         //Query  query = entityManager.createNamedQuery("pais.listaTodos");
-        Query  query = entityManager.createNamedQuery("pais.listaPorNome");
+        Query query = entityManager.createNamedQuery("pais.listaPorNome");
         query.setParameter("nome", "BRASIL");
-        Pais pais =(Pais) query.getSingleResult();
+        Pais pais = (Pais) query.getSingleResult();
         System.out.println(pais.getNome());
     }
 
