@@ -8,6 +8,7 @@ package teste;
 import controle.EntityManagerUtil;
 import javax.persistence.EntityManager;
 import modelo.Pais;
+import modelo.TipoEndereco;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,33 +17,36 @@ import org.junit.Test;
  *
  * @author Administrador
  */
-public class TestePersistirPais {
-
+public class TestePersistirTipoEndereco {
+    
     private EntityManager entityManager;
-
-    public TestePersistirPais() {
+    
+    public TestePersistirTipoEndereco() {
     }
-
+    
     @Before
     public void setUp() {
-        entityManager = EntityManagerUtil.getEntityManager();
+        entityManager =EntityManagerUtil.getEntityManager();
     }
-
+    
     @After
     public void tearDown() {
         entityManager.close();
     }
-
+    
     @Test
-    public void persistir() {
-        Pais pais = new Pais();
-        pais.setCodigo(1058);
-        pais.setNome("BRASIL");
-        pais.setIso("BRA");
+    public void persistir(){
+        TipoEndereco tipoEndereco = new TipoEndereco();
+        tipoEndereco.setCodigo(1);
+        tipoEndereco.setDescricao("Residencial");
+        TipoEndereco tipoEndereco2 = new TipoEndereco();
+        tipoEndereco2.setCodigo(2);
+        tipoEndereco2.setDescricao("Comercial");
         entityManager.getTransaction().begin();
-        entityManager.persist(pais);
+        entityManager.persist(tipoEndereco);
+        entityManager.persist(tipoEndereco2);
         entityManager.getTransaction().commit();
-
+        
     }
-
+    
 }

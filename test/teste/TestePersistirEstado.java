@@ -31,10 +31,10 @@ public class TestePersistirEstado {
         Boolean exception = false;
         try {
             Estado estado = new Estado();
-            estado.setCodigo(26)
-                  .setNome("PERNAMBUCO")
-                  .setUf("PE")
-                  .setPais(entityManager.find(Pais.class, 1058));
+            estado.setCodigo(26);
+            estado.setNome("PERNAMBUCO");
+            estado.setUf("PE");
+            estado.setPais(entityManager.find(Pais.class, 1058));
             entityManager.getTransaction().begin();
             entityManager.persist(estado);
             entityManager.getTransaction().commit();
