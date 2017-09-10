@@ -37,13 +37,9 @@ public class TestePersistirTipoEndereco {
     public void persistir(){
         TipoEndereco tipoEndereco = new TipoEndereco();
         tipoEndereco.setCodigo(01);
-        tipoEndereco.setDescricao("Residencial");
-        TipoEndereco tipoEndereco2 = new TipoEndereco();
-        tipoEndereco2.setCodigo(02);
-        tipoEndereco2.setDescricao("Comercial");
+        tipoEndereco.setDescricao("Residencial");;
         entityManager.getTransaction().begin();
         entityManager.persist(tipoEndereco);
-        entityManager.persist(tipoEndereco2);
         entityManager.getTransaction().commit();
         
     }

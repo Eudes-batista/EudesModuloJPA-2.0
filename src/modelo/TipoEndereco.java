@@ -9,24 +9,26 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "tipo_endereco")
 public class TipoEndereco implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer codigo;
+    Integer codigo;
 
     @Length(max = 20, message = "Campo descrição só poder receber apenas {max} caracteres")
     @NotBlank(message = "Campo descricao não ser vazio")
     @NotNull(message = "Campo descricao não pode ser nulo")
     @Column(length = 20, nullable = false)
-    private String descricao;
+    String descricao;
 
     @Override
     public int hashCode() {
