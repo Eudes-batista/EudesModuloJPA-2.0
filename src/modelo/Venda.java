@@ -14,6 +14,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -26,6 +28,9 @@ import org.hibernate.annotations.ForeignKey;
 @Data
 @Entity
 @Table(name = "venda")
+@NamedQueries(
+   @NamedQuery(name="venda.listaVendaPorData",query="SELECT v FROM Venda WHERE v.data < CURRENT_DATE")
+)
 public class Venda implements Serializable {
 
     @Id

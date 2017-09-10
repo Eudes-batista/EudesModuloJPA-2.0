@@ -4,11 +4,10 @@ import controle.EntityManagerUtil;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import modelo.Cidade;
+import modelo.Pais;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 public class ConsultarPais {
 
@@ -30,10 +29,10 @@ public class ConsultarPais {
     @Test
     public void consultar() {
 
-        Query  query = entityManager.createNamedQuery("cidade.listaTodos");
-        List<Cidade> listarCidades = query.getResultList();
-        for (Cidade listarCidade : listarCidades) {
-            System.out.println(listarCidade.getNome());
+        Query  query = entityManager.createNamedQuery("pais.listaTodos");
+        List<Pais> listarPaises = query.getResultList();
+        for (Pais listarPais : listarPaises) {
+            System.out.println(listarPais.getNome());
         }
     }
 
