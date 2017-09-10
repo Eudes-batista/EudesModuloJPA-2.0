@@ -7,12 +7,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.ForeignKey;
 
 @Embeddable
 @Data
-@EqualsAndHashCode
 public class CompraPK implements Serializable {
 
     @Column(nullable = false)
