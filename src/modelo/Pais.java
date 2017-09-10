@@ -7,11 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
-@Data
+@Setter
+@Getter
+//@Data
 @Entity
 @Table(name = "pais")
 public class Pais implements Serializable {

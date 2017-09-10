@@ -1,7 +1,6 @@
 package teste;
 
 import controle.EntityManagerUtil;
-import java.util.Calendar;
 import java.util.Set;
 import javax.persistence.EntityManager;
 import javax.swing.JOptionPane;
@@ -10,7 +9,6 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import modelo.Cidade;
 import modelo.Estado;
-import modelo.PessoaFisica;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
